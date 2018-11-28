@@ -182,7 +182,7 @@ public class IndexController extends BaseController {
             return RestResponseBo.fail("姓名过长");
         }
 
-        if (StringUtils.isNotBlank(mail) && !TaleUtils.isEmail(mail)) {
+        if (StringUtils.isNotBlank(mail) && TaleUtils.isEmail(mail)) {
             return RestResponseBo.fail("请输入正确的邮箱格式");
         }
 

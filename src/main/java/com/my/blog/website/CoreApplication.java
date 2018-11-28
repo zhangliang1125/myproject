@@ -27,7 +27,7 @@ public class CoreApplication extends SpringBootServletInitializer
         return builder.sources(this.getClass());
     }
 
-    @Bean(initMethod = "init", destroyMethod = "close")
+    @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         return new DruidDataSource();

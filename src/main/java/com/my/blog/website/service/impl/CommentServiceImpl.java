@@ -42,7 +42,7 @@ public class CommentServiceImpl implements ICommentService {
         if (StringUtils.isBlank(comments.getAuthor())) {
             comments.setAuthor("热心网友");
         }
-        if (StringUtils.isNotBlank(comments.getMail()) && !TaleUtils.isEmail(comments.getMail())) {
+        if (StringUtils.isNotBlank(comments.getMail()) && TaleUtils.isEmail(comments.getMail())) {
             throw new TipException("请输入正确的邮箱格式");
         }
         if (StringUtils.isBlank(comments.getContent())) {
@@ -96,8 +96,7 @@ public class CommentServiceImpl implements ICommentService {
     public PageInfo<CommentVo> getCommentsWithPage(CommentVoExample commentVoExample, int page, int limit) {
         PageHelper.startPage(page, limit);
         List<CommentVo> commentVos = commentDao.selectByExampleWithBLOBs(commentVoExample);
-        PageInfo<CommentVo> pageInfo = new PageInfo<>(commentVos);
-        return pageInfo;
+        return new PageInfo<>(commentVos);
     }
 
     @Override
